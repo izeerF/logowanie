@@ -1,0 +1,18 @@
+body {
+    background-image: url("./img/img.png");
+    background-repeat: no-repeat;
+
+}
+main {
+    width: 600px;
+    height: 900px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    -webkit-box-shadow: 0px 0px 24px 8px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 24px 8px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 24px 8px rgba(0, 0, 0, 1);
+    margin: auto;
+    display: flex;  
+    justify-content: center;
+    align-items: center; 
+}
