@@ -9,14 +9,22 @@ class User {
 
     public function __construct(string $email, string $password) {
         $this->login = $email;
-        $this->password_hash = password_hash($password, PASSWORD_ARGON2I);
+        $this->password = $password;
+        global $db;
         $this->$db = $db;
     }
-    public function isAuth() {
-
+    public function isAuth() : bool {
+        if(isset($this->id) && $this->id != null) {
+            return true;
+        }
+        else return false;
     }
     public function login() {
-        
+        $q = "SELECT * FROM uzytkownicy WHERE email = ? LIMIT 1";
+        $preperedQ = $this->db->prepare($q);
+        $preperedQ->bind_param('s', $this->email);
+        $preperedQ->execute();
+        $result = $preperedQ->get_result();
     }
     public function logout() {
         
