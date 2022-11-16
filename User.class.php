@@ -20,6 +20,9 @@ class User {
         }
         else return false;
     }
+    public function getMail() : string {
+        return $this->email;
+    }
     public function login() {
         $q = "SELECT * FROM uzytkownicy WHERE email = ? LIMIT 1";
         $preperedQ = $this->db->prepare($q);
@@ -52,7 +55,7 @@ class User {
             $this->imie = "";
         if(!isset($this->nazwisko))
             $this->nazwisko = "";
-        $pQ -> bind_param("sssss", $email, $haslo, $login, $imie, $nazwisko);
+        $pQ -> bind_param("sssss", $this->email, $passwordHash, $this->login, $this->imie, $this->nazwisko);
         $pQ->execute();
     }
 }
