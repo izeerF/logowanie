@@ -23,18 +23,23 @@ class User {
     public function getMail() : string {
         return $this->email;
     }
-    public function login() {
+    public function login() : bool {
         $q = "SELECT * FROM uzytkownicy WHERE email = ? LIMIT 1";
         $preperedQ = $this->db->prepare($q);
         $preperedQ->bind_param('s', $this->email);
         $preperedQ->execute();
         $result = $preperedQ->get_result();
+        if($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         if(password_verify($this->haslo, $row['haslo'])) {
             $this->id = $row['id'];
             $this->imie = $row['imie'];
             $this->nazwisko = $row['nazwisko'];
+            return true;
         }
+        else return false;
+    } else return false;
+        
     }
     public function logout() {
         $this->email = null;
@@ -57,6 +62,15 @@ class User {
             $this->nazwisko = "";
         $pQ -> bind_param("sssss", $this->email, $passwordHash, $this->login, $this->imie, $this->nazwisko);
         $pQ->execute();
+    }
+    public function setFirstName(string $imie) {
+        $this->imie = $imie;
+    }
+    public function setLastName(string $nazwisko) {
+        $this->nazwisko = $nazwisko;
+    }
+    public function getName() : string {
+        return $this->nazwisko . " " . $this->nazwisko;
     }
 }
 
