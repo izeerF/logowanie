@@ -7,7 +7,7 @@ $twig = new Twig\Environment($loader);
 
 $twig->display("register.html.twig", ['name' => "Kacper"]);
 
-require('User.class.php');
+
 $db = new mysqli("localhost", "root", "", "stronalogowanie");
 if (isset($_REQUEST['email'])) {
     $email = $_REQUEST['email'];
@@ -16,7 +16,7 @@ if (isset($_REQUEST['email'])) {
     $imie = $_REQUEST['imie'];
     $nazwisko = $_REQUEST['nazwisko'];
 
-    $user = new User($email, $haslo);
+    $user = new User($email, $haslo, $login);
     $user->register();
     var_dump($user->getMail());
     if($user->getMail()) {

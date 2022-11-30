@@ -1,6 +1,6 @@
 {% include 'header.html.twig' %}
     <main>
-            <form action="login.php" method="post">
+            <form action="/kacperhinz4gp/logowanie/login" method="post">
                 <label for="email">Email:</label>
                 <input type="email" name="email" id="email" required>
                 <br>
@@ -8,5 +8,6 @@
                 <input type="password" name="password" id="password" required>
                 <br>
                 <input type="submit" value="Zaloguj">
+                <a href="/kacperhinz4gp/logowanie/register">Nie masz konta?</a>
     </main>
 {% include 'footer.html.twig' %}

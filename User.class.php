@@ -8,9 +8,10 @@ class User {
     private string $imie;
     private string $nazwisko;
 
-    public function __construct(string $email, string $haslo) {
+    public function __construct(string $email, string $haslo, string $login = "") {
         $this->email = $email;
         $this->haslo = $haslo;
+        $this->login = $login;
         global $db;
         $this->db = &$db;
     }
@@ -35,6 +36,7 @@ class User {
             $this->id = $row['id'];
             $this->imie = $row['imie'];
             $this->nazwisko = $row['nazwisko'];
+            $this->login = $row['login'];
             return true;
         }
         else return false;
@@ -60,6 +62,7 @@ class User {
             $this->imie = "";
         if(!isset($this->nazwisko))
             $this->nazwisko = "";
+
         $pQ -> bind_param("sssss", $this->email, $passwordHash, $this->login, $this->imie, $this->nazwisko);
         $pQ->execute();
     }

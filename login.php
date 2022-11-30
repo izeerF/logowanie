@@ -1,7 +1,6 @@
 <?php
 require_once('vendor/autoload.php');
 
-require('User.class.php');
 require('config.php');
 //$db = new mysqli('localhost', 'root', '', 'stronalogowanie');
 if(isset($_REQUEST['email']) && isset($_REQUEST['password']))
@@ -22,6 +21,6 @@ else {
 
 }
 else {
-    $twig->display('login.html.twig');
+    die("ERROR - no data");
 }
 ?>
