@@ -3,20 +3,22 @@
         <form action="register.php" method="post">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required>
-            <br>
+ 
             <label for="password">Haslo:</label>
             <input type="password" name="password" id="password" required>
-            <br>
+
             <label for="imie">Imie:</label>
             <input type="text" name="imie" id="imie" required>
-            <br>
+
             <label for="nazwisko">Nazwisko:</label>
             <input type="text" name="nazwisko" id="nazwisko" required>
-            <br>
+
             <label for="nick">Nickname:</label>
             <input type="text" name="nick" id="nick" required>
-            <br>
+
             <input type="submit" value="Zarejestruj">
             <a href="/kacperhinz4gp/logowanie/login">Masz juz konto?</a>
+
+            <p style="color: red;">{{message}}</p>
     </main>
 {% include 'footer.html.twig' %}

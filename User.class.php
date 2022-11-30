@@ -75,6 +75,9 @@ class User {
     public function getName() : string {
         return $this->nazwisko . " " . $this->nazwisko;
     }
+    public function getNick() : string {
+        return $this->login;
+    }
 }
 
 

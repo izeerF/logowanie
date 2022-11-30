@@ -10,12 +10,15 @@ $haslo = $_REQUEST['password'];
 $user = new User($email, $haslo);
 
 if($user->login()) {
-    $message =  'Pomyslnie zalogowano:'.$user->getName();
-    $twig->display('message.html.twig', ['message' => $message]);
-    var_dump($user->login());
+    $_SESSION['authorized'] = true;
+    $v = array(
+        'message' => 'Pomyslnie zalogowano: '.$user->getNick(),
+        'authorized' => $_SESSION['authorized'],
+    );
+    $twig->display('message.html.twig', $v);
 }
 else {
-    $twig->display('message.html.twig', ['message' => "nieprawidlowy email lub haslo"]);
+    $twig->display('login.html.twig', ['message' => "nieprawidlowy email lub haslo"]);
     var_dump($user->login());
 }
 

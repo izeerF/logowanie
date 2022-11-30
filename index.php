@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('vendor/autoload.php');
 require_once('User.class.php');
 require_once('config.php');
@@ -11,6 +12,8 @@ function isAuth() {
 Route::add('/', function() {
     isAuth();
     echo "Strona główna";
+    global $twig;
+    $twig->display("home.html.twig", ['authorized' => $_SESSION]);
 });
 
 Route::add('/login', function() {

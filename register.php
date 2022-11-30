@@ -20,10 +20,10 @@ if (isset($_REQUEST['email'])) {
     $user->register();
     var_dump($user->getMail());
     if($user->getMail()) {
-        echo("Pomyslnie zarejestrowano");
+        $twig->display('message.html.twig', ['message' => "Pomyślnie zarejestrowano"]);
     }
     else {
-        echo("Rejestracja nie udana"); 
+        $twig->display('register.html.twig', ['message' => "Rejstracja nie udana"]);
     }
 
 }
