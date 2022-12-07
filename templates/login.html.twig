@@ -1,15 +1,15 @@
 {% include 'header.html.twig' %}
     <main>
             <form action="/kacperhinz4gp/logowanie/login" method="post">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
-                <br>
-                <label for="password">Haslo:</label>
-                <input type="password" name="password" id="password" required>
-                <br>
+  
+                <input type="email" name="email" id="email" placeholder="email" required>
+
+
+                <input type="password" name="password" id="password" placeholder="haslo" required>
+
                 <input type="submit" value="Zaloguj">
                 <a href="/kacperhinz4gp/logowanie/register">Nie masz konta?</a>
-                <br>
+
                 <p style="color: red;">{{message}}</p>
     </main>
 {% include 'footer.html.twig' %}
