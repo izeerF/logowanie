@@ -28,7 +28,17 @@ Route::add('/login', function() {
 
 
 Route::add('/register', function() {
+    global $twig;
+    $twig->display("register.html.twig");
+});
+Route::add('/register', function() {
+    echo "Przetwarzanie rejstracji";
     include('./register.php');
+}, 'post');
+Route::add('/logout', function() {
+   session_destroy(); 
+   global $twig;
+   $twig->display("message.html.twig", ['message' => 'Pomyślnie wylogowano']);
 });
 
 Route::run('/kacperhinz4gp/logowanie');
